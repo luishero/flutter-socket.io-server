@@ -18,14 +18,25 @@
         });
 
         socket.on('disconnect', function() {
-            console.log('Perdimos comunicacion con el servidor')
+            console.log('Perdimos comunicación con el servidor');
         });
-        // Emitir eventos
-        socket.emit('mensaje', {nombre: 'Fernando'});
-        // Escuchar eventos, payload es lo que se envia
-        socket.on ('mensaje', function( payload ){
-            console.log('Escuchando:', payload);
-        })
+
+
+        socket.emit('mensaje', { nombre: 'Fernando' } );
+
+        socket.on('nuevo-mensaje', function( payload ){
+            console.log('Escuhando:', payload );
+        });
+
+        socket.on('active-bands', function( bands ){
+            console.clear();
+            console.table( bands );
+        });
+
+
+
+
     </script>
+
 </body>
 </html>
